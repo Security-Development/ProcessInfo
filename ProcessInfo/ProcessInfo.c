@@ -14,11 +14,15 @@ int main(void)
 	
 	pe32.dwSize = sizeof(PROCESSENTRY32);
 	
+	
+	
 	if(Process32First(hProcessSnap, &pe32))
 	{
+		
+		printf(" ex) [ Memory Address ]  Process.exe \n");
 		do
 		{
-			printf("%s \n", pe32.szExeFile);
+			printf(" [ 0x%x ]  %s \n", pe32.th32ProcessID, pe32.szExeFile);
 		} while(Process32Next(hProcessSnap, &pe32));
 	}
 
